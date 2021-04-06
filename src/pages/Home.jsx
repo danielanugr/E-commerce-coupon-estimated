@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { fetchProducts } from '../store/actions'
+import { fetchProducts, fetchProvinces } from '../store/actions'
 import ProductCard from '../components/ProductCard'
 
 function Home () {
@@ -10,7 +10,11 @@ function Home () {
   useEffect(() => {
     dispatch(fetchProducts())
   }, [dispatch])
-  console.log(products)
+
+  useEffect(() => {
+    dispatch(fetchProvinces())
+  }, [dispatch])
+  // console.log(products)
   return (
     <>
       <header className='bg-white shadow'>
