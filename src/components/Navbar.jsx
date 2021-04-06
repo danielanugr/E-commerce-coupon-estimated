@@ -1,8 +1,20 @@
 import React, { useState } from 'react'
+import { useHistory } from 'react-router-dom'
 
 function Navbar () {
   const [profileMenu, setProfileMenu] = useState(false)
   const [mobileMenu, setMobileMenu] = useState(false)
+  const history = useHistory()
+
+  function cartPage (e) {
+    e.preventDefault()
+    history.push('/cart')
+  }
+
+  function homePage (e) {
+    e.preventDefault()
+    history.push('/')
+  }
 
   return (
     <>
@@ -22,6 +34,7 @@ function Navbar () {
                   <div className='ml-10 flex items-baseline space-x-4'>
                     {/* <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" --> */}
                     <a
+                      onClick={homePage}
                       href='/'
                       className='bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium'
                     >
@@ -73,6 +86,7 @@ function Navbar () {
                         href='#'
                         className='block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100'
                         role='menuitem'
+                        onClick={cartPage}
                       >
                         Cart
                       </a>

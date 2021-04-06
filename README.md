@@ -1,6 +1,15 @@
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+## Coupon Code
+
+Avaliable Coupon Code: khilafu20, khilafu15, khilafu25
+
+## Disclaimer
+
+There are no search page and history, please ignore
 
 ## Available Scripts
 

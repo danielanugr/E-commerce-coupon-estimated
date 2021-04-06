@@ -1,7 +1,19 @@
 import React from 'react'
 import svgCart from '../assets/cart-512.png'
+import { addCart, editQty } from '../store/actions'
+import { useDispatch, useSelector } from 'react-redux'
 
 function ProductCard ({ product }) {
+  const cart = useSelector(state => state.userData.cart)
+  const dispatch = useDispatch()
+
+  function addToCart () {
+    const findItem = cart.find(item => item.id === product.id)
+    if (!findItem) {
+      dispatch(addCart({ ...product, quantity: 1 }))
+    }
+  }
+
   return (
     <li className='col-span-1 flex flex-col text-center bg-white rounded-lg shadow divide-y divide-gray-200'>
       <div className='flex-1 flex flex-col p-8'>
@@ -30,7 +42,10 @@ function ProductCard ({ product }) {
       <div>
         <div className='-mt-px flex divide-x divide-gray-200'>
           <div className='w-0 flex-1 flex'>
-            <button class='relative -mr-px w-0 flex-1 inline-flex items-center bg-blue-700 hover:bg-blue-500 justify-center py-4 text-sm text-gray-700 font-medium border border-transparent rounded-bl-lg hover:text-gray-500'>
+            <button
+              onClick={addToCart}
+              class='relative -mr-px w-0 flex-1 inline-flex items-center bg-blue-700 hover:bg-blue-500 justify-center py-4 text-sm text-gray-700 font-medium border border-transparent rounded-bl-lg hover:text-gray-500'
+            >
               <img className='5 h-5' src={svgCart} alt='carticon' />
               <span class='ml-3 text-white'>Add To Cart</span>
             </button>
